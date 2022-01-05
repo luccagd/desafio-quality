@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Chácara do Seu Jão",
+    "district": {
+      "name": "Jardim Amélia",
+      "squareMeterPrice" : 200
+    },
+    "rooms": [
+      {
+        "name": "Quarto",
+        "width": 5,
+        "length": 4
+      },
+      {
+        "name": "Cozinha",
+        "width": 5,
+        "length": 6
+      }
+    ]
+  },
+  {
+    "name": "Apartamento",
+    "district": {
+      "name": "Morumbi",
+      "squareMeterPrice" : 1500.50
+    },
+    "rooms": [
+      {
+        "name": "Quarto",
+        "width": 5,
+        "length": 4
+      },
+      {
+        "name": "Quarto",
+        "width": 5,
+        "length": 4
+      },
+      {
+        "name": "Cozinha",
+        "width": 5,
+        "length": 6
+      },
+      {
+        "name": "Banheiro",
+        "width": 4,
+        "length": 3
+      }
+    ]
+  }
+]
