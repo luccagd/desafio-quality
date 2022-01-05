@@ -1,0 +1,13 @@
+[ {
+  "name" : "teste",
+  "squareMeterPrice" : 100
+}, {
+  "name" : "teste2",
+  "squareMeterPrice" : 200
+}, {
+  "name" : "teste2",
+  "squareMeterPrice" : 300
+}, {
+  "name" : "",
+  "squareMeterPrice" : 300
+} ]

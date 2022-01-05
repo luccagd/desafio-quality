@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Chácara do Seu Jão",
     "district": {
       "name": "Jardim Amélia",
@@ -15,10 +16,15 @@
         "name": "Cozinha",
         "width": 5,
         "length": 6
+      },{
+        "name": "Banheiro",
+        "width": 1,
+        "length": 1
       }
     ]
   },
   {
+    "id": 2,
     "name": "Apartamento",
     "district": {
       "name": "Morumbi",
