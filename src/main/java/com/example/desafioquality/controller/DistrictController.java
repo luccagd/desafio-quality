@@ -32,10 +32,9 @@ public class DistrictController {
     }
 
     @PostMapping("/post")
-    public ResponseEntity<DistrictDTO> post(@Valid @RequestBody District district, UriComponentsBuilder uriComponentsBuilder) throws IOException {
-        districtService.save(district);
-        DistrictDTO districtDTO = DistrictDTO.toDTO(district);
-        URI uri = uriComponentsBuilder.path("/district/get/{name}").buildAndExpand(districtDTO.getName()).toUri();
+    public ResponseEntity<DistrictDTO> post(@Valid @RequestBody DistrictDTO districtDTO, UriComponentsBuilder uriComponentsBuilder) throws IOException {
+        DistrictDTO dto = DistrictDTO.toDTO(districtService.save(districtDTO));
+        URI uri = uriComponentsBuilder.path("/district/get/{name}").buildAndExpand(dto.getName()).toUri();
         return ResponseEntity.created(uri).body(districtDTO);
     }
 

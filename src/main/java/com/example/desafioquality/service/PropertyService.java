@@ -7,6 +7,8 @@ import com.example.desafioquality.repository.PropertyRepository;
 import com.example.desafioquality.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 import java.util.List;
 
 import java.util.Properties;
@@ -16,8 +18,6 @@ import java.util.stream.Collectors;
 public class PropertyService {
     @Autowired
     private PropertyRepository propertyRepository;
-
-
 
     public Property findById(Long id)
     {
@@ -37,13 +37,13 @@ public class PropertyService {
 
         //return propertyRepository.getAll().(property -> property.getName().equals(name)).collect(Collectors.toList());
     }
-    public Room GetRoomBiggest(String name)
-    {
-
-        Room room2 = new Room();
-       // findByName(name).stream().filter(property -> property.getRooms().stream().forEach(room -> room.getArea().compareTo(room2.getArea())))
-    return null;
+    
+    public void save(Property property) throws IOException  {
+        propertyRepository.save(property);
     }
 
 
+    public Room getBiggestRoom(Long id) {
+      return propertyRepository.biggestRoom(id);
+    }
 }

@@ -1,22 +1,26 @@
 package com.example.desafioquality.repository;
 
-import com.example.desafioquality.dto.PropertyResponse;
+import com.example.desafioquality.dto.DistrictDTO;
 import com.example.desafioquality.entity.Property;
 import com.example.desafioquality.entity.Room;
 import com.example.desafioquality.helper.DatabaseHelper;
+import com.example.desafioquality.service.RoomService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Repository
 public class PropertyRepository {
+
+
 
 
     private ObjectMapper objectMapper = DatabaseHelper.getObjectMapper();
@@ -31,12 +35,6 @@ public class PropertyRepository {
         return new ArrayList<>(propertyList);
     }
 
-    public Property getOrdenedRooms(Long id){
-       Property property = findById(id);
-       property.setRooms(property.ordenedListRoom(property.getRooms()));
-       return property;
-    }
-
     public List<Property> findByName(String name) {
         return propertyList.stream().filter(property -> property.getName().equals(name)).collect(Collectors.toList());
     }
@@ -47,9 +45,13 @@ public class PropertyRepository {
     }
 
     public void save(Property property) throws IOException {
-        property.setId((long) propertyList.size() + 1);
-        propertyList.add(property);
-        updateFile();
+        try {
+            property.setId((long) propertyList.size() + 1);
+            propertyList.add(property);
+            updateFile();
+        }catch (IOException e){
+            throw new IOException("Erro na leitura do arquivo");
+        }
     }
 
     public void updateFile() throws IOException {
@@ -58,9 +60,11 @@ public class PropertyRepository {
         } catch (IOException e) {
             throw new IOException("Erro leitura de arquivo");
         }
-
     }
 
-
+    public Room biggestRoom(Long id) {
+        Room room = findById(id).getBiggestRoom(findById(id).getRooms());
+        return room;
+    }
 }
 

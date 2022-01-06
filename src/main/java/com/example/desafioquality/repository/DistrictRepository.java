@@ -26,9 +26,11 @@ public class DistrictRepository {
         return districtList.stream().filter(district -> district.getName().equals(name)).collect(Collectors.toList());
     }
 
-    public void save(District district) throws IOException {
+    public District save(District district) throws IOException {
+        district.setId((long) districtList.size() + 1);
         districtList.add(district);
         updateFile();
+        return district;
     }
 
     public void updateFile() throws IOException{

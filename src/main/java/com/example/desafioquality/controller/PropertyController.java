@@ -1,18 +1,21 @@
 package com.example.desafioquality.controller;
 
-import com.example.desafioquality.dto.PropertyResponse;
+import com.example.desafioquality.dto.DistrictDTO;
+import com.example.desafioquality.dto.PropertyDTO;
 import com.example.desafioquality.dto.RoomDTO;
 import com.example.desafioquality.entity.Property;
+import com.example.desafioquality.entity.Room;
 import com.example.desafioquality.repository.PropertyRepository;
 import com.example.desafioquality.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.imageio.IIOException;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -34,19 +37,29 @@ public class PropertyController {
     @GetMapping("/price/{id}")
     public BigDecimal getPropertyValue(@PathVariable Long id)
     {
-        PropertyResponse response = PropertyResponse.toResponse(propertyService.findById(id));
+        PropertyDTO response = PropertyDTO.toResponse(propertyService.findById(id));
         return response.getTotal();
     }
 
     @GetMapping("/room/area/{id}")
     public ResponseEntity<List<RoomDTO>> getAreaByRoom(@PathVariable Long id)
     {
-        PropertyResponse response = PropertyResponse.toResponse(propertyService.findById(id));
+        PropertyDTO response = PropertyDTO.toResponse(propertyService.findById(id));
         return ResponseEntity.ok().body(response.getRooms());
     }
-
-    @GetMapping("/room/{id}/ordened")
-    public Property getOrdenedRooms(@PathVariable Long id) {
-        return repository.getOrdenedRooms(id);
+    @GetMapping("/room/biggest/{id}")
+    public ResponseEntity<RoomDTO> getBiggestRoom(@PathVariable Long id) {
+        return ResponseEntity.ok().body(RoomDTO.toDTO(propertyService.getBiggestRoom(id)));
     }
+
+    @PostMapping("/property")
+    public ResponseEntity <PropertyDTO> save(@RequestBody PropertyDTO propertyDTO, UriComponentsBuilder uriComponentsBuilder) throws IOException {
+        Property property = PropertyDTO.toEntity(propertyDTO);
+        propertyService.save(property);
+        URI uri = uriComponentsBuilder.path("/create-request/get/{id}").buildAndExpand(propertyDTO.getId()).toUri();
+        return ResponseEntity.created(uri).body(propertyDTO);
+
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.desafioquality.service;
 
+import com.example.desafioquality.dto.DistrictDTO;
 import com.example.desafioquality.entity.District;
 import com.example.desafioquality.repository.DistrictRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,11 @@ public class DistrictService {
         return districtRepository.findByName(name);
     }
 
-    public void save(District district) throws IOException {
-        districtRepository.save(district);
+    public District save(DistrictDTO districtDTO) throws IOException {
+        District district = District.builder()
+                .name(districtDTO.getName())
+                .squareMeterPrice(districtDTO.getSquareMeterPrice()).build();
+       return districtRepository.save(district);
     }
 
 

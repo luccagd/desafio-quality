@@ -27,6 +27,7 @@ public class Property {
     @NotNull (message = "The field name must not be null!")
     @Size(min=1, max=30, message = "The property name must have between 1 and 30 letters")
     private String name;
+
     private District district;
     private List<Room> rooms = new ArrayList<>();
 
@@ -38,5 +39,18 @@ public class Property {
         return new BigDecimal(getArea() * district.getSquareMeterPrice().doubleValue()).setScale(2);
     }
 
+    public Room getBiggestRoom(List<Room> roomList){
+        if(!(roomList.equals(null))){
+            Room novoRoom = roomList.get(0);
+            for(Room room: roomList){
+                if(room.getArea() > novoRoom.getArea()){
+                    novoRoom = room;
+                }
+            }
+            return novoRoom;
+        }else {
+            return null;
+        }
+    }
 }
 

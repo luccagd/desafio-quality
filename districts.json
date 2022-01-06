@@ -1,13 +1,10 @@
 [ {
-  "name" : "teste",
-  "squareMeterPrice" : 100
-}, {
-  "name" : "teste2",
-  "squareMeterPrice" : 200
-}, {
-  "name" : "teste2",
+  "name" : "abcd",
   "squareMeterPrice" : 300
 }, {
-  "name" : "",
+  "name" : "abc",
+  "squareMeterPrice" : 300
+}, {
+  "name" : "ab",
   "squareMeterPrice" : 300
 } ]

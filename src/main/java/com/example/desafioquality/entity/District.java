@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 @Builder
 public class District {
 
+    private Long id;
     @NotEmpty(message = "The field name must not be empty!")
     @NotNull(message = "The field name must not be null!")
     @Size(min=1, max=45, message = "The district name must have between 1 and 45 letters")

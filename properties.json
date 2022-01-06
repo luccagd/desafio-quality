@@ -1,56 +1,91 @@
-[
-  {
-    "id": 1,
-    "name": "Chácara do Seu Jão",
-    "district": {
-      "name": "Jardim Amélia",
-      "squareMeterPrice" : 200
-    },
-    "rooms": [
-      {
-        "name": "Quarto",
-        "width": 5,
-        "length": 4
-      },
-      {
-        "name": "Cozinha",
-        "width": 5,
-        "length": 6
-      },{
-        "name": "Banheiro",
-        "width": 1,
-        "length": 1
-      }
-    ]
+[ {
+  "id" : 1,
+  "name" : "Chácara do Seu Jão",
+  "district" : {
+    "id" : null,
+    "name" : "Jardim Amélia",
+    "squareMeterPrice" : 200
   },
-  {
-    "id": 2,
-    "name": "Apartamento",
-    "district": {
-      "name": "Morumbi",
-      "squareMeterPrice" : 1500.50
-    },
-    "rooms": [
-      {
-        "name": "Quarto",
-        "width": 5,
-        "length": 4
-      },
-      {
-        "name": "Quarto",
-        "width": 5,
-        "length": 4
-      },
-      {
-        "name": "Cozinha",
-        "width": 5,
-        "length": 6
-      },
-      {
-        "name": "Banheiro",
-        "width": 4,
-        "length": 3
-      }
-    ]
-  }
-]
+  "rooms" : [ {
+    "id" : null,
+    "name" : "Quarto",
+    "width" : 5.0,
+    "length" : 4.0,
+    "area" : 20.0
+  }, {
+    "id" : null,
+    "name" : "Cozinha",
+    "width" : 5.0,
+    "length" : 6.0,
+    "area" : 30.0
+  }, {
+    "id" : null,
+    "name" : "Banheiro",
+    "width" : 1.0,
+    "length" : 1.0,
+    "area" : 1.0
+  } ],
+  "area" : 51.0
+}, {
+  "id" : 2,
+  "name" : "Apartamento",
+  "district" : {
+    "id" : null,
+    "name" : "Morumbi",
+    "squareMeterPrice" : 1500.50
+  },
+  "rooms" : [ {
+    "id" : null,
+    "name" : "Quarto",
+    "width" : 5.0,
+    "length" : 4.0,
+    "area" : 20.0
+  }, {
+    "id" : null,
+    "name" : "Quarto",
+    "width" : 5.0,
+    "length" : 4.0,
+    "area" : 20.0
+  }, {
+    "id" : null,
+    "name" : "Cozinha",
+    "width" : 5.0,
+    "length" : 6.0,
+    "area" : 30.0
+  }, {
+    "id" : null,
+    "name" : "Banheiro",
+    "width" : 4.0,
+    "length" : 3.0,
+    "area" : 12.0
+  } ],
+  "area" : 82.0
+}, {
+  "id" : 3,
+  "name" : null,
+  "district" : null,
+  "rooms" : [ ],
+  "area" : 0.0
+}, {
+  "id" : 4,
+  "name" : "Teste",
+  "district" : {
+    "id" : null,
+    "name" : "Jardim Amélia",
+    "squareMeterPrice" : 200
+  },
+  "rooms" : [ {
+    "id" : null,
+    "name" : "Cozinha",
+    "width" : 5.0,
+    "length" : 6.0,
+    "area" : 30.0
+  }, {
+    "id" : null,
+    "name" : "Cozinha",
+    "width" : 5.0,
+    "length" : 6.0,
+    "area" : 30.0
+  } ],
+  "area" : 60.0
+} ]
