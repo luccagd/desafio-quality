@@ -10,7 +10,6 @@ import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.List;
 
-
 public abstract class DatabaseHelper {
     private static final ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     private static final String PATH_PROPERTIES = "properties.json";
@@ -28,7 +27,7 @@ public abstract class DatabaseHelper {
         }
     }
 
-    public static List<District> getDatabaseDistrict(){
+    public static List<District> getDatabaseDistrict() {
         try {
             File file = new File(PATH_DISTRICTS);
             FileInputStream fileInputStream = new FileInputStream(file);
@@ -44,9 +43,11 @@ public abstract class DatabaseHelper {
         return objectMapper;
     }
 
-    public static String getDatabasePathProperties() { return PATH_PROPERTIES; }
+    public static String getDatabasePathProperties() {
+        return PATH_PROPERTIES;
+    }
 
-    public static String getDatabasePathDistricts(){
+    public static String getDatabasePathDistricts() {
         return PATH_DISTRICTS;
     }
 }

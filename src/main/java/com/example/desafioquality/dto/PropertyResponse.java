@@ -18,14 +18,15 @@ import java.util.List;
 @Data
 @Builder
 public class PropertyResponse {
-
     private Long id;
+
     @NotEmpty(message = "The field name must not be empty!")
     @NotNull(message = "The field name must not be null!")
     @Size(min = 1, max = 30, message = "The property name must have between 1 and 30 letters")
     @Min(value = 1, message = "The property name must have between 1 and 30 letters")
     @Max(value = 30, message = "The property name must have between 1 and 30 letters")
     private String name;
+
     private District district;
     private List<Room> rooms = new ArrayList<>();
     private BigDecimal total;
@@ -38,14 +39,5 @@ public class PropertyResponse {
                 .rooms(property.getRooms())
                 .total(property.findFinalPrice()).build();
         return response;
-    }
-
-    public static Property toEntity(PropertyResponse propertyResponse) {
-        Property property = Property.builder()
-                .id(propertyResponse.getId())
-                .name(propertyResponse.getName())
-                .district(propertyResponse.getDistrict())
-                .rooms(propertyResponse.getRooms()).build();
-        return property;
     }
 }

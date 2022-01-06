@@ -4,10 +4,10 @@ import com.example.desafioquality.dto.DistrictDTO;
 import com.example.desafioquality.entity.District;
 import com.example.desafioquality.exception.BusinessException;
 import com.example.desafioquality.repository.DistrictRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -17,10 +17,6 @@ public class DistrictService {
 
     public DistrictService(DistrictRepository districtRepository) {
         this.districtRepository = districtRepository;
-    }
-
-    public List<District> getAll() {
-        return districtRepository.getAll();
     }
 
     public District findById(Long id) {
@@ -36,15 +32,11 @@ public class DistrictService {
         return district;
     }
 
-    public District findByName(String name) {
-        return districtRepository.findByName(name);
-    }
-
     public District save(DistrictDTO districtDTO) throws IOException {
         District district = District.builder()
                 .name(districtDTO.getName())
                 .squareMeterPrice(districtDTO.getSquareMeterPrice()).build();
+
         return districtRepository.save(district);
     }
-
 }

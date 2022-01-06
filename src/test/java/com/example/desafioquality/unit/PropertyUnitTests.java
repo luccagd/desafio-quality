@@ -7,8 +7,10 @@ import com.example.desafioquality.repository.DistrictRepository;
 import com.example.desafioquality.repository.PropertyRepository;
 import com.example.desafioquality.service.DistrictService;
 import com.example.desafioquality.service.PropertyService;
+import com.example.desafioquality.unit.mocks.FakeDistrictObject;
 import com.example.desafioquality.unit.mocks.FakePropertyObject;
 import com.example.desafioquality.unit.mocks.FakeRoomObject;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,11 +18,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
 public class PropertyUnitTests {
-
     private PropertyService propertyService;
 
     @Mock
@@ -28,6 +31,7 @@ public class PropertyUnitTests {
 
     private DistrictService districtService;
 
+    @Mock
     private DistrictRepository districtRepository;
 
     @BeforeEach
@@ -41,7 +45,8 @@ public class PropertyUnitTests {
     public void shouldReturnExceptionIfIdIsLessThanOne() {
         Long invalidId = 0L;
 
-        BusinessException exception = Assertions.assertThrows(BusinessException.class, () -> propertyService.findById(invalidId));
+        BusinessException exception = Assertions.assertThrows(BusinessException.class,
+                () -> propertyService.findById(invalidId));
 
         Assertions.assertEquals(new BusinessException().getClass(), exception.getClass());
         Assertions.assertEquals("Id should be greater than zero", exception.getMessage());
@@ -53,7 +58,8 @@ public class PropertyUnitTests {
 
         Mockito.when(propertyRepository.findById(validId)).thenReturn(null);
 
-        NoSuchElementException exception = Assertions.assertThrows(NoSuchElementException.class, () -> propertyService.findById(validId));
+        NoSuchElementException exception = Assertions.assertThrows(NoSuchElementException.class,
+                () -> propertyService.findById(validId));
 
         Assertions.assertEquals(new NoSuchElementException().getClass(), exception.getClass());
         Assertions.assertEquals("District not found for the id passed as parameter", exception.getMessage());
@@ -99,8 +105,17 @@ public class PropertyUnitTests {
 
         List<Room> roomsReturned = propertyService.getRoomsArea(validId);
         for (int i = 0; i < roomsReturned.size(); i++) {
-            Assertions.assertEquals(fakeProperty.getRooms().get(i).calculateRoomArea(), roomsReturned.get(i).calculateRoomArea());
+            Assertions.assertEquals(fakeProperty.getRooms().get(i).calculateRoomArea(),
+                    roomsReturned.get(i).calculateRoomArea());
         }
     }
 
+    @Test
+    public void shouldSavePropertySucessfully() {
+        Long validId = 1L;
+
+        Mockito.when(districtRepository.findById(validId)).thenReturn(FakeDistrictObject.makeFakeDistrict());
+
+        assertDoesNotThrow(() -> propertyService.save(FakePropertyObject.makeFakeProperty()));
+    }
 }

@@ -15,13 +15,9 @@ import java.util.List;
 @Data
 @Builder
 public class Property {
-
     private Long id;
-
     private String name;
-
     private District district;
-
     private List<Room> rooms = new ArrayList<>();
 
     public Double calculateArea(){
@@ -32,7 +28,7 @@ public class Property {
         return new BigDecimal(calculateArea() * district.getSquareMeterPrice().doubleValue()).setScale(2);
     }
 
-    public Room getBiggestRoom(){
+    public Room findBiggestRoom(){
         return rooms.stream().max(Comparator.comparing(room -> room.calculateRoomArea())).get();
     }
 }

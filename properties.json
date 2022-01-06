@@ -1,28 +1,73 @@
-[
-  {
-    "id": 1,
-    "name": "Chácara do Seu Jão",
-    "district": {
-      "id": 1,
-      "name": "Jardim Amélia",
-      "squareMeterPrice": 200
-    },
-    "rooms": [
-      {
-        "name": "Quarto",
-        "width": 5.0,
-        "length": 4.0
-      },
-      {
-        "name": "Cozinha",
-        "width": 5.0,
-        "length": 6.0
-      },
-      {
-        "name": "Banheiro",
-        "width": 1.0,
-        "length": 1.0
-      }
-    ]
-  }
-]
+[ {
+  "id" : 1,
+  "name" : "Chácara do Seu Jão",
+  "district" : {
+    "id" : 1,
+    "name" : "Jardim Amélia",
+    "squareMeterPrice" : 200
+  },
+  "rooms" : [ {
+    "name" : "Quarto",
+    "width" : 5.0,
+    "length" : 4.0
+  }, {
+    "name" : "Cozinha",
+    "width" : 5.0,
+    "length" : 6.0
+  }, {
+    "name" : "Banheiro",
+    "width" : 1.0,
+    "length" : 1.0
+  } ]
+}, {
+  "id" : 2,
+  "name" : "Chácara Mourão",
+  "district" : {
+    "id" : 12,
+    "name" : "Rua do Seu Jão",
+    "squareMeterPrice" : 1
+  },
+  "rooms" : [ {
+    "name" : "Quarto",
+    "width" : 2.0,
+    "length" : 2.0
+  }, {
+    "name" : "Banheiro",
+    "width" : 3.0,
+    "length" : 3.0
+  } ]
+}, {
+  "id" : 3,
+  "name" : "Chácara Mourão",
+  "district" : {
+    "id" : 12,
+    "name" : "Rua do Seu Jão",
+    "squareMeterPrice" : 1
+  },
+  "rooms" : [ {
+    "name" : "Quarto",
+    "width" : 2.0,
+    "length" : 2.0
+  }, {
+    "name" : "Banheiro",
+    "width" : 3.0,
+    "length" : 3.0
+  } ]
+}, {
+  "id" : 4,
+  "name" : "Chácara Mourão",
+  "district" : {
+    "id" : 13,
+    "name" : "Rua do Seu Jão",
+    "squareMeterPrice" : 1
+  },
+  "rooms" : [ {
+    "name" : "Quarto",
+    "width" : 2.0,
+    "length" : 2.0
+  }, {
+    "name" : "Banheiro",
+    "width" : 3.0,
+    "length" : 3.0
+  } ]
+} ]

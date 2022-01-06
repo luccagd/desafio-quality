@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,22 +18,15 @@ import java.util.List;
 @Builder
 public class PropertyRequest {
     private Long id;
+
     @NotEmpty(message = "The field name must not be empty!")
     @NotNull(message = "The field name must not be null!")
     @Size(min = 1, max = 30, message = "The property name must have between 1 and 30 letters")
     private String name;
-    private District district;
-    private List<Room> rooms = new ArrayList<>();
 
-    public static PropertyRequest toRequest(Property property) {
-        PropertyRequest propertyRequest = PropertyRequest.builder()
-                .id(property.getId())
-                .name(property.getName())
-                .district(property.getDistrict())
-                .rooms(property.getRooms())
-                .build();
-        return propertyRequest;
-    }
+    private District district;
+
+    private List<Room> rooms = new ArrayList<>();
 
     public static Property toEntity(PropertyRequest propertyRequest) {
         Property property = Property.builder()
@@ -45,7 +37,4 @@ public class PropertyRequest {
                 .build();
         return property;
     }
-
-
-
 }

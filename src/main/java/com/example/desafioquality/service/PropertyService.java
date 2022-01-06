@@ -1,13 +1,15 @@
 package com.example.desafioquality.service;
 
+import com.example.desafioquality.dto.PropertyRoomAreaResponse;
 import com.example.desafioquality.entity.Property;
 import com.example.desafioquality.entity.Room;
 import com.example.desafioquality.exception.BusinessException;
 import com.example.desafioquality.repository.PropertyRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -37,22 +39,10 @@ public class PropertyService {
 
     }
 
-    public List<Property> getAll() {
-        return propertyRepository.getAll();
-    }
-
-    public List<Property> findAllByNameAndDistrict(String name, String districtName) {
-        return propertyRepository.findByNameAndDistrict(name, districtName);
-    }
-
-    public List<Property> findByName(String name) {
-        return propertyRepository.findByName(name);
-    }
-
     public Room getBiggestRoom(Long id) {
         Property property = findById(id);
 
-        return property.getBiggestRoom();
+        return property.findBiggestRoom();
     }
 
     public Double getArea(Long id) {
@@ -67,8 +57,21 @@ public class PropertyService {
         return property.getRooms();
     }
 
+    public List<PropertyRoomAreaResponse> getAreaByRoom(Long id) {
+        List<PropertyRoomAreaResponse> response = new ArrayList<>();
+
+        Property property = findById(id);
+
+        property.getRooms().forEach(room -> {
+            response.add(new PropertyRoomAreaResponse(room.getName(), room.calculateRoomArea()));
+        });
+
+        return response;
+    }
+
     public void save(Property property) throws IOException {
         property.setDistrict(districtService.findById(property.getDistrict().getId()));
+
         propertyRepository.save(property);
     }
 }
