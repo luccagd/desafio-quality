@@ -16,14 +16,19 @@ import java.util.stream.Collectors;
 public class DistrictRepository {
     private ObjectMapper objectMapper = DatabaseHelper.getObjectMapper();
     private String PATH = DatabaseHelper.getDatabasePathDistricts();
-    private List<District> districtList = new ArrayList();
+    private List<District> districtList = new ArrayList(DatabaseHelper.getDatabaseDistrict());
 
-    public List<District> getAll(){
+    public List<District> getAll() {
         return districtList;
     }
 
-    public List<District> findByName(String name){
+    public List<District> findByName(String name) {
         return districtList.stream().filter(district -> district.getName().equals(name)).collect(Collectors.toList());
+    }
+
+    public District findById(Long id)
+    {
+        return districtList.stream().filter(district -> district.getId().equals(id)).findFirst().orElse(null);
     }
 
     public District save(District district) throws IOException {

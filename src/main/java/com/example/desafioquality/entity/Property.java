@@ -9,12 +9,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,19 +27,21 @@ public class Property {
     private District district;
     private List<Room> rooms = new ArrayList<>();
 
-    public Double getArea(){
-        return rooms.stream().mapToDouble(room -> room.getArea().doubleValue()).sum();
+
+    public Double calculateArea(){
+       return rooms.stream().mapToDouble(room -> room.calculateAreaRoom().doubleValue()).sum();
     }
 
     public BigDecimal findFinalPrice() {
-        return new BigDecimal(getArea() * district.getSquareMeterPrice().doubleValue()).setScale(2);
+        return new BigDecimal(calculateArea() * district.getSquareMeterPrice().doubleValue()).setScale(2);
     }
+
 
     public Room getBiggestRoom(List<Room> roomList){
         if(!(roomList.equals(null))){
             Room novoRoom = roomList.get(0);
             for(Room room: roomList){
-                if(room.getArea() > novoRoom.getArea()){
+                if(room.calculateAreaRoom() > novoRoom.calculateAreaRoom()){
                     novoRoom = room;
                 }
             }

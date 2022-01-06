@@ -30,7 +30,7 @@ public abstract class DatabaseHelper {
 
     public static List<District> getDatabaseDistrict(){
         try {
-            File file = new File(PATH_PROPERTIES);
+            File file = new File(PATH_DISTRICTS);
             FileInputStream fileInputStream = new FileInputStream(file);
             return Arrays.asList(objectMapper.readValue(fileInputStream, District[].class));
 

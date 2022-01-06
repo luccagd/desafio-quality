@@ -1,15 +1,10 @@
 package com.example.desafioquality.repository;
 
-import com.example.desafioquality.dto.DistrictDTO;
 import com.example.desafioquality.entity.Property;
 import com.example.desafioquality.entity.Room;
 import com.example.desafioquality.helper.DatabaseHelper;
-import com.example.desafioquality.service.RoomService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,15 +14,11 @@ import java.util.stream.Collectors;
 
 @Repository
 public class PropertyRepository {
-
-
-
-
     private ObjectMapper objectMapper = DatabaseHelper.getObjectMapper();
     private String PATH = DatabaseHelper.getDatabasePathProperties();
     private List<Property> propertyList = new ArrayList(DatabaseHelper.getDatabaseProperty());
 
-    public Property findById(Long id) {
+   public Property findById(Long id) {
         return propertyList.stream().filter(property -> property.getId().equals(id)).findFirst().orElse(new Property());
     }
 

@@ -5,21 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
 public class RoomDTO {
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Long id;
+
     @NotEmpty(message = "The field name must not be empty!")
     @NotNull(message = "The field name must not be null!")
     @Size(min = 1, max = 45, message = "The district name must have between 1 and 45 letters")
@@ -34,18 +30,17 @@ public class RoomDTO {
     private double width;
     private BigDecimal area;
 
-    public static RoomDTO toDTO(Room room) {
+   public static RoomDTO toDTO(Room room) {
         RoomDTO roomDTO = RoomDTO.builder()
                 .name(room.getName())
                 .length(room.getLength())
                 .width(room.getWidth())
-                .area(new BigDecimal(room.getArea()).setScale(2)).build();
+                .area(new BigDecimal(room.calculateAreaRoom()).setScale(2)).build();
         return roomDTO;
     }
     //OLHAR PARA O ID
     public static Room toEntity(RoomDTO roomDTO) {
         Room room = Room.builder()
-                .id(roomDTO.getId())
                 .name(roomDTO.getName())
                 .length(roomDTO.getLength())
                 .width(roomDTO.getWidth())
@@ -60,5 +55,7 @@ public class RoomDTO {
     public static List<Room> toListEntity(List<RoomDTO> roomListDTO) {
         return roomListDTO.stream().map(RoomDTO::toEntity).collect(Collectors.toList());
     }
+
+
 
 }

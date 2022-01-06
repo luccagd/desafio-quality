@@ -17,6 +17,16 @@ public class DistrictService {
     @Autowired
     private DistrictRepository districtRepository;
 
+    public District findById(Long id)
+    {
+        District district = districtRepository.findById(id);
+
+        if(district == null){
+            throw new RuntimeException("ERRO");
+        }
+        return district;
+
+    }
     public List<District> getAll(){
         return districtRepository.getAll();
     }
