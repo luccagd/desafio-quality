@@ -2,36 +2,41 @@ package com.example.desafioquality.service;
 
 import com.example.desafioquality.dto.DistrictDTO;
 import com.example.desafioquality.entity.District;
+import com.example.desafioquality.exception.BusinessException;
 import com.example.desafioquality.repository.DistrictRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.NoSuchElementException;
 
 @Service
 public class DistrictService {
 
-
-    @Autowired
     private DistrictRepository districtRepository;
 
-    public District findById(Long id)
-    {
-        District district = districtRepository.findById(id);
-
-        if(district == null){
-            throw new RuntimeException("ERRO");
-        }
-        return district;
-
+    public DistrictService(DistrictRepository districtRepository) {
+        this.districtRepository = districtRepository;
     }
-    public List<District> getAll(){
+
+    public List<District> getAll() {
         return districtRepository.getAll();
     }
 
-    public List<District> findByName(String name){
+    public District findById(Long id) {
+        if (id < 1) {
+            throw new BusinessException("Id should be greater than zero");
+        }
+
+        District district = districtRepository.findById(id);
+        if (district == null) {
+            throw new NoSuchElementException("District not found for the id passed as parameter");
+        }
+
+        return district;
+    }
+
+    public District findByName(String name) {
         return districtRepository.findByName(name);
     }
 
@@ -39,8 +44,7 @@ public class DistrictService {
         District district = District.builder()
                 .name(districtDTO.getName())
                 .squareMeterPrice(districtDTO.getSquareMeterPrice()).build();
-       return districtRepository.save(district);
+        return districtRepository.save(district);
     }
-
 
 }

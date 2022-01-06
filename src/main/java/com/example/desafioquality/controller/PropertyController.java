@@ -18,10 +18,13 @@ import java.util.List;
 @RequestMapping("/property")
 public class PropertyController {
 
-    @Autowired
     private PropertyService propertyService;
 
-   @GetMapping("/area/{id}/total")
+    public PropertyController(PropertyService propertyService) {
+        this.propertyService = propertyService;
+    }
+
+    @GetMapping("/area/{id}/total")
    public ResponseEntity <String> getTotalArea(@PathVariable Long id)
    {
        return ResponseEntity.ok().body("Area total: " + propertyService.findById(id).calculateArea() + "m²") ;//ok

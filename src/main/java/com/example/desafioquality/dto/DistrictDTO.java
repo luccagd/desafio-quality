@@ -18,10 +18,12 @@ import java.util.stream.Collectors;
 public class DistrictDTO {
 
     private Long id;
+
     @NotEmpty(message = "The field name must not be empty!")
     @NotNull(message = "The field name must not be null!")
     @Size(min=1, max=45, message = "The district name must have between 1 and 45 letters")
     private String name;
+
     @Range(min=1,max=13,message = "The district name must have between 1 and 13 letters")
     private BigDecimal squareMeterPrice;
 

@@ -1,19 +1,13 @@
 package com.example.desafioquality.unit.mocks;
 
-import com.example.desafioquality.unit.FakeProperty;
+import com.example.desafioquality.entity.Property;
 
 import java.util.Arrays;
 
 public class FakePropertyObject {
 
-    public static FakeProperty makeFakeProperty() {
-//        return new FakeProperty(1L,
-//                "Valid Name",
-//                FakeDistrictObject.makeFakeDistrict(),
-//                Arrays.asList(FakeRoomObject.makeFakeRoom(), FakeRoomObject.makeFakeRoom())
-//        );
-
-        return new FakeProperty(1L,
+    public static Property makeFakeProperty() {
+        return new Property(1L,
                 "Valid Name",
                 FakeDistrictObject.makeFakeDistrict(),
                 Arrays.asList(

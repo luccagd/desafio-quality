@@ -18,9 +18,8 @@ public class DistrictController {
     private DistrictService districtService;
 
     @GetMapping(path = "/get", params = {"name"})
-    public ResponseEntity<List<DistrictDTO>> getByName(@RequestParam(value = "name") String name){
-        List<DistrictDTO> districtDTOList = DistrictDTO.listEntityToDTO(districtService.findByName(name));
-        return ResponseEntity.ok().body(districtDTOList);
+    public ResponseEntity<DistrictDTO> getByName(@RequestParam(value = "name") String name){
+        return ResponseEntity.ok().body(DistrictDTO.toDTO(districtService.findByName(name)));
     }
 
     @GetMapping("/get/all")

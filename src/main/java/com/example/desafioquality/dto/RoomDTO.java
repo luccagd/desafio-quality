@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.List;
@@ -35,7 +35,7 @@ public class RoomDTO {
                 .name(room.getName())
                 .length(room.getLength())
                 .width(room.getWidth())
-                .area(new BigDecimal(room.calculateAreaRoom()).setScale(2)).build();
+                .area(new BigDecimal(room.calculateRoomArea()).setScale(2)).build();
         return roomDTO;
     }
     //OLHAR PARA O ID

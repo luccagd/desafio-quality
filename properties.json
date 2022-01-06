@@ -1,73 +1,28 @@
-[ {
-  "id" : 1,
-  "name" : "Chácara do Seu Jão",
-  "district" : {
-    "id" : null,
-    "name" : "Jardim Amélia",
-    "squareMeterPrice" : 200
-  },
-  "rooms" : [ {
-    "name" : "Quarto",
-    "width" : 5.0,
-    "length" : 10.0
-  }, {
-    "name" : "Cozinha",
-    "width" : 5.0,
-    "length" : 5.0
-  }, {
-    "name" : "Banheiro",
-    "width" : 1.0,
-    "length" : 1.0
-  } ]
-}, {
-  "id" : 2,
-  "name" : "Teste2",
-  "district" : {
-    "id" : 2,
-    "name" : "abc",
-    "squareMeterPrice" : 400
-  },
-  "rooms" : [ {
-    "name" : "Cozinha",
-    "width" : 5.0,
-    "length" : 6.0
-  }, {
-    "name" : "Cozinha",
-    "width" : 5.0,
-    "length" : 6.0
-  } ]
-}, {
-  "id" : 3,
-  "name" : "Teste2",
-  "district" : {
-    "id" : 1,
-    "name" : "abcd",
-    "squareMeterPrice" : 300
-  },
-  "rooms" : [ {
-    "name" : "Cozinha",
-    "width" : 5.0,
-    "length" : 6.0
-  }, {
-    "name" : "Cozinha",
-    "width" : 5.0,
-    "length" : 6.0
-  } ]
-}, {
-  "id" : 4,
-  "name" : "Teste2",
-  "district" : {
-    "id" : 3,
-    "name" : "ab",
-    "squareMeterPrice" : 500
-  },
-  "rooms" : [ {
-    "name" : "Cozinha",
-    "width" : 5.0,
-    "length" : 6.0
-  }, {
-    "name" : "Cozinha",
-    "width" : 5.0,
-    "length" : 6.0
-  } ]
-} ]
+[
+  {
+    "id": 1,
+    "name": "Chácara do Seu Jão",
+    "district": {
+      "id": 1,
+      "name": "Jardim Amélia",
+      "squareMeterPrice": 200
+    },
+    "rooms": [
+      {
+        "name": "Quarto",
+        "width": 5.0,
+        "length": 4.0
+      },
+      {
+        "name": "Cozinha",
+        "width": 5.0,
+        "length": 6.0
+      },
+      {
+        "name": "Banheiro",
+        "width": 1.0,
+        "length": 1.0
+      }
+    ]
+  }
+]
