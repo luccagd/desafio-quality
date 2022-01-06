@@ -7,85 +7,67 @@
     "squareMeterPrice" : 200
   },
   "rooms" : [ {
-    "id" : null,
     "name" : "Quarto",
     "width" : 5.0,
-    "length" : 4.0,
-    "area" : 20.0
+    "length" : 10.0
   }, {
-    "id" : null,
     "name" : "Cozinha",
     "width" : 5.0,
-    "length" : 6.0,
-    "area" : 30.0
+    "length" : 5.0
   }, {
-    "id" : null,
     "name" : "Banheiro",
     "width" : 1.0,
-    "length" : 1.0,
-    "area" : 1.0
-  } ],
-  "area" : 51.0
+    "length" : 1.0
+  } ]
 }, {
   "id" : 2,
-  "name" : "Apartamento",
+  "name" : "Teste2",
   "district" : {
-    "id" : null,
-    "name" : "Morumbi",
-    "squareMeterPrice" : 1500.50
+    "id" : 2,
+    "name" : "abc",
+    "squareMeterPrice" : 400
   },
   "rooms" : [ {
-    "id" : null,
-    "name" : "Quarto",
-    "width" : 5.0,
-    "length" : 4.0,
-    "area" : 20.0
-  }, {
-    "id" : null,
-    "name" : "Quarto",
-    "width" : 5.0,
-    "length" : 4.0,
-    "area" : 20.0
-  }, {
-    "id" : null,
     "name" : "Cozinha",
     "width" : 5.0,
-    "length" : 6.0,
-    "area" : 30.0
+    "length" : 6.0
   }, {
-    "id" : null,
-    "name" : "Banheiro",
-    "width" : 4.0,
-    "length" : 3.0,
-    "area" : 12.0
-  } ],
-  "area" : 82.0
+    "name" : "Cozinha",
+    "width" : 5.0,
+    "length" : 6.0
+  } ]
 }, {
   "id" : 3,
-  "name" : null,
-  "district" : null,
-  "rooms" : [ ],
-  "area" : 0.0
-}, {
-  "id" : 4,
-  "name" : "Teste",
+  "name" : "Teste2",
   "district" : {
-    "id" : null,
-    "name" : "Jardim Amélia",
-    "squareMeterPrice" : 200
+    "id" : 1,
+    "name" : "abcd",
+    "squareMeterPrice" : 300
   },
   "rooms" : [ {
-    "id" : null,
     "name" : "Cozinha",
     "width" : 5.0,
-    "length" : 6.0,
-    "area" : 30.0
+    "length" : 6.0
   }, {
-    "id" : null,
     "name" : "Cozinha",
     "width" : 5.0,
-    "length" : 6.0,
-    "area" : 30.0
-  } ],
-  "area" : 60.0
+    "length" : 6.0
+  } ]
+}, {
+  "id" : 4,
+  "name" : "Teste2",
+  "district" : {
+    "id" : 3,
+    "name" : "ab",
+    "squareMeterPrice" : 500
+  },
+  "rooms" : [ {
+    "name" : "Cozinha",
+    "width" : 5.0,
+    "length" : 6.0
+  }, {
+    "name" : "Cozinha",
+    "width" : 5.0,
+    "length" : 6.0
+  } ]
 } ]

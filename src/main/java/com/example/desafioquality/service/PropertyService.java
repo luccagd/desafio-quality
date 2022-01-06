@@ -1,30 +1,30 @@
 package com.example.desafioquality.service;
 
-import com.example.desafioquality.entity.District;
 import com.example.desafioquality.entity.Property;
 import com.example.desafioquality.entity.Room;
+import com.example.desafioquality.repository.DistrictRepository;
 import com.example.desafioquality.repository.PropertyRepository;
-import com.example.desafioquality.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
 
-import java.util.Properties;
-import java.util.stream.Collectors;
 
 @Service
 public class PropertyService {
+
     @Autowired
     private PropertyRepository propertyRepository;
+
+    @Autowired
+    private DistrictService districtService;
 
     public Property findById(Long id)
     {
         return propertyRepository.findById(id);
     }
     public List<Property> getAll() {
-
         return propertyRepository.getAll();
     }
 
@@ -34,16 +34,15 @@ public class PropertyService {
 
     public List<Property> findByName(String name){
         return propertyRepository.findByName(name);
-
-        //return propertyRepository.getAll().(property -> property.getName().equals(name)).collect(Collectors.toList());
     }
-    
-    public void save(Property property) throws IOException  {
-        propertyRepository.save(property);
-    }
-
 
     public Room getBiggestRoom(Long id) {
       return propertyRepository.biggestRoom(id);
     }
+
+
+  public void save(Property property) throws IOException  {
+        property.setDistrict(districtService.findById(property.getDistrict().getId()));
+        propertyRepository.save(property);
+  }
 }

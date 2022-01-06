@@ -15,21 +15,17 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Room implements Comparable<Room> {
+public class Room {
 
-    private Long id;
     private String name;
     private Double width;
     private Double length;
 
 
-    public Double getArea() {
+   public Double calculateAreaRoom() {
 
     return this.width * this.length;
     }
 
-    @Override
-    public int compareTo(Room room) {
-        return Double.compare(this.getArea(), room.getArea());
-    }
+
 }

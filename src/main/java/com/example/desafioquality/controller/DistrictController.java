@@ -1,13 +1,11 @@
 package com.example.desafioquality.controller;
 
 import com.example.desafioquality.dto.DistrictDTO;
-import com.example.desafioquality.entity.District;
 import com.example.desafioquality.service.DistrictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import javax.validation.Valid;
 import java.io.IOException;
 import java.net.URI;

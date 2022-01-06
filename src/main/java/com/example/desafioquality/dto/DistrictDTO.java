@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
-
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.List;
