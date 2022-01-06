@@ -1,9 +1,20 @@
 package com.example.desafioquality.unit;
 
+import com.example.desafioquality.dto.DistrictDTO;
+import com.example.desafioquality.entity.District;
+import com.example.desafioquality.exception.BusinessException;
+import com.example.desafioquality.repository.DistrictRepository;
+import com.example.desafioquality.service.DistrictService;
 import com.example.desafioquality.unit.mocks.FakeDistrictObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 public class DistrictUnitTests {
 
@@ -11,43 +22,79 @@ public class DistrictUnitTests {
     public void shouldReturnExceptionIfIdIsLessThanOne() {
         Long invalidId = 0L;
 
-        FakeDistrictService fakeDistrictService = new FakeDistrictService(new FakeDistrictRepository());
+        DistrictService districtService = new DistrictService(new DistrictRepository());
 
-        ArrayIndexOutOfBoundsException exception = Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, () -> fakeDistrictService.findById(invalidId));
-        Assertions.assertEquals(new ArrayIndexOutOfBoundsException().getClass(), exception.getClass());
+        BusinessException exception = Assertions.assertThrows(BusinessException.class, () -> districtService.findById(invalidId));
+        Assertions.assertEquals(new BusinessException().getClass(), exception.getClass());
+        Assertions.assertEquals("Id should be greater than zero", exception.getMessage());
     }
 
     @Test
     public void shouldReturnExceptionIfPropertyNotFound() {
         Long validId = 1L;
 
-        FakeDistrictRepository mockRepository = Mockito.mock(FakeDistrictRepository.class);
+        DistrictRepository mockRepository = Mockito.mock(DistrictRepository.class);
         Mockito.when(mockRepository.findById(validId)).thenReturn(null);
-        FakeDistrictService fakeDistrictService = new FakeDistrictService(mockRepository);
+        DistrictService districtService = new DistrictService(mockRepository);
 
-        ArithmeticException exception = Assertions.assertThrows(ArithmeticException.class, () -> fakeDistrictService.findById(validId));
-        Assertions.assertEquals(new ArithmeticException().getClass(), exception.getClass());
+        NoSuchElementException exception = Assertions.assertThrows(NoSuchElementException.class, () -> districtService.findById(validId));
+        Assertions.assertEquals(new NoSuchElementException().getClass(), exception.getClass());
+        Assertions.assertEquals("District not found for the id passed as parameter", exception.getMessage());
     }
 
     @Test
     public void shouldCallFindByIdFromRepositoryWithCorrectValues() {
         Long validId = 1L;
 
-        FakeDistrictRepository mockRepository = Mockito.mock(FakeDistrictRepository.class);
-        Mockito.when(mockRepository.findById(validId)).thenCallRealMethod();
-        FakeDistrictService fakeDistrictService = new FakeDistrictService(mockRepository);
+        DistrictRepository mockRepository = Mockito.mock(DistrictRepository.class);
+        Mockito.when(mockRepository.findById(Mockito.anyLong())).thenReturn(FakeDistrictObject.makeFakeDistrict());
+        DistrictService districtService = new DistrictService(mockRepository);
 
-        fakeDistrictService.findById(validId);
+        districtService.findById(validId);
         Mockito.verify(mockRepository, Mockito.times(1)).findById(Mockito.eq(validId));
     }
 
     @Test
-    public void shouldReturnTheExistentDistrict() {
+    public void shouldReturnTheExistentDistrict() throws IOException {
         Long validId = 1L;
 
-        FakeDistrictService fakeDistrictService = new FakeDistrictService(new FakeDistrictRepository());
-        FakeDistrict fakeDistrict = FakeDistrictObject.makeFakeDistrict();
+        District fakeDistrict = FakeDistrictObject.makeFakeDistrict();
 
-        Assertions.assertEquals(fakeDistrict, fakeDistrictService.findById(validId));
+        DistrictDTO fakeDistrictDTO = DistrictDTO.builder().name("Valid Name").squareMeterPrice(new BigDecimal(0.0)).build();
+
+        DistrictRepository mockRepository = Mockito.mock(DistrictRepository.class);
+        Mockito.when(mockRepository.save(Mockito.any())).thenReturn(fakeDistrict);
+        DistrictService districtService = new DistrictService(mockRepository);
+
+        District savedDistrict = districtService.save(fakeDistrictDTO);
+        Assertions.assertEquals(savedDistrict.getId(), fakeDistrict.getId());
     }
+
+    @Test
+    public void shouldReturnTheDistrictFilteredByName() {
+        String validName = "Valid Name";
+        District fakeDistrict = FakeDistrictObject.makeFakeDistrict();
+
+        DistrictRepository mockRepository = Mockito.mock(DistrictRepository.class);
+        Mockito.when(mockRepository.findByName(Mockito.anyString())).thenReturn(fakeDistrict);
+        DistrictService districtService = new DistrictService(mockRepository);
+
+        District filteredDistrict = districtService.findByName(validName);
+        Assertions.assertEquals(filteredDistrict.getName(), fakeDistrict.getName());
+    }
+
+    @Test
+    public void shouldReturnAllTheDistricts() {
+        District fakeDistrict = FakeDistrictObject.makeFakeDistrict();
+
+        List<District> fakeDistricts = Arrays.asList(fakeDistrict, fakeDistrict, fakeDistrict);
+
+        DistrictRepository mockRepository = Mockito.mock(DistrictRepository.class);
+        Mockito.when(mockRepository.getAll()).thenReturn(fakeDistricts);
+        DistrictService districtService = new DistrictService(mockRepository);
+
+        List<District> filteredDistricts = districtService.getAll();
+        Assertions.assertEquals(fakeDistricts, filteredDistricts);
+    }
+
 }

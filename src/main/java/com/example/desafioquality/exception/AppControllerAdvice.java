@@ -13,6 +13,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 public class AppControllerAdvice {
@@ -36,6 +37,34 @@ public class AppControllerAdvice {
                         .message(ex.getMessage())
                         .data(errors)
                         .build(),
+                HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<AppErrorResponse> handleBusinessException(BusinessException ex) {
+        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+
+        return new ResponseEntity<>(
+                AppErrorResponse.builder()
+                        .timestamp(Date.from(Instant.now()))
+                        .code(badRequest.value())
+                        .status(badRequest.name())
+                        .message(ex.getMessage())
+                        .build(),
                 HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<AppErrorResponse> handleNoSuchElementException(NoSuchElementException ex) {
+        HttpStatus notFound = HttpStatus.NOT_FOUND;
+
+        return new ResponseEntity<>(
+                AppErrorResponse.builder()
+                        .timestamp(Date.from(Instant.now()))
+                        .code(notFound.value())
+                        .status(notFound.name())
+                        .message(ex.getMessage())
+                        .build(),
+                HttpStatus.NOT_FOUND);
     }
 }

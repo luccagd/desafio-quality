@@ -22,8 +22,8 @@ public class DistrictRepository {
         return districtList;
     }
 
-    public List<District> findByName(String name){
-        return districtList.stream().filter(district -> district.getName().equals(name)).collect(Collectors.toList());
+    public District findByName(String name){
+        return districtList.stream().filter(district -> district.getName().equals(name)).findFirst().orElse(null);
     }
 
     public District save(District district) throws IOException {
@@ -39,5 +39,9 @@ public class DistrictRepository {
         }catch (IOException e){
             throw new IOException("Erro leitura de arquivo");
         }
+    }
+
+    public District findById(Long id) {
+        return districtList.stream().filter(district -> district.getId().equals(id)).findFirst().orElse(null);
     }
 }
