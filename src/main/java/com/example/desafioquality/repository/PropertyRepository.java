@@ -62,9 +62,5 @@ public class PropertyRepository {
         }
     }
 
-    public Room biggestRoom(Long id) {
-        Room room = findById(id).getBiggestRoom(findById(id).getRooms());
-        return room;
-    }
 }
 
