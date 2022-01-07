@@ -1,5 +1,11 @@
 # Desafio Quality
 
+## Tests Coverage
+
+<img src=".github/testCoverage.png">
+
+<br>
+
 ## Entidades da aplicação
 
 -  Property

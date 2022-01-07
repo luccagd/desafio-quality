@@ -71,6 +71,14 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com/example/desafioquality/entity/</exclude>
+                        <exclude>com/example/desafioquality/error/</exclude>
+                        <exclude>com/example/desafioquality/dto/</exclude>
+                        <exclude>com/example/desafioquality/DesafioQualityApplication.class</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
