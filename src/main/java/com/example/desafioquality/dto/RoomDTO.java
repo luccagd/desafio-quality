@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -39,5 +41,17 @@ public class RoomDTO {
                 .width(room.getWidth())
                 .area(new BigDecimal(room.calculateRoomArea()).setScale(2)).build();
         return roomDTO;
+    }
+
+    public static Room toEntity(RoomDTO roomDTO) {
+        Room room = Room.builder()
+                .name(roomDTO.getName())
+                .length(roomDTO.getLength())
+                .width(roomDTO.getWidth()).build();
+        return room;
+    }
+
+    public static List<Room> listToEntity(List<RoomDTO> roomDTOList){
+        return roomDTOList.stream().map(room -> toEntity(room)).collect(Collectors.toList());
     }
 }

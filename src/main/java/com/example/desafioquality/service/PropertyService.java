@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -73,5 +74,9 @@ public class PropertyService {
         property.setDistrict(districtService.findById(property.getDistrict().getId()));
 
         propertyRepository.save(property);
+    }
+
+    public List<Property> getAll() {
+        return propertyRepository.getAll();
     }
 }

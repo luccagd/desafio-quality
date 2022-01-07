@@ -23,7 +23,7 @@ public class DistrictController {
     public ResponseEntity<DistrictDTO> post(@Valid @RequestBody DistrictDTO districtDTO, UriComponentsBuilder uriComponentsBuilder) throws IOException {
         DistrictDTO dto = DistrictDTO.toDTO(districtService.save(districtDTO));
         URI uri = uriComponentsBuilder.path("/district/get/{name}").buildAndExpand(dto.getName()).toUri();
-        
         return ResponseEntity.created(uri).body(dto);
     }
 }
+

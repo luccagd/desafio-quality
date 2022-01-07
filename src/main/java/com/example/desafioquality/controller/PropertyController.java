@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URI;
@@ -47,15 +48,12 @@ public class PropertyController {
         return ResponseEntity.ok().body(RoomDTO.toDTO(propertyService.getBiggestRoom(id)));
     }
 
-    @PostMapping
-    public ResponseEntity<PropertyResponse> save(@RequestBody PropertyRequest propertyRequest,
-            UriComponentsBuilder uriComponentsBuilder) throws IOException {
-        Property property = PropertyRequest.toEntity(propertyRequest);
-
-        propertyService.save(property);
-        
-        URI uri = uriComponentsBuilder.path("/create-request/get/{id}").buildAndExpand(property.getId()).toUri();
-        return ResponseEntity.created(uri).body(PropertyResponse.toResponse(property));
+    @PostMapping("/post")
+    public ResponseEntity<PropertyResponse> save(@Valid @RequestBody PropertyRequest propertyRequest,
+        UriComponentsBuilder uriComponentsBuilder) throws IOException {
+        propertyService.save(PropertyRequest.toEntity(propertyRequest));
+        URI uri = uriComponentsBuilder.path("/create-request/get/{id}").buildAndExpand(propertyRequest.getId()).toUri();
+        return ResponseEntity.created(uri).body(PropertyResponse.toResponse(propertyRequest));
     }
 
 }

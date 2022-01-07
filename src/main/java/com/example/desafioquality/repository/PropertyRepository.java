@@ -39,4 +39,8 @@ public class PropertyRepository {
             throw new IOException("Erro leitura de arquivo");
         }
     }
+
+    public List<Property> getAll() {
+        return propertyList;
+    }
 }

@@ -21,53 +21,41 @@
   } ]
 }, {
   "id" : 2,
-  "name" : "Chácara Mourão",
+  "name" : "Chacara Everton",
   "district" : {
-    "id" : 12,
-    "name" : "Rua do Seu Jão",
-    "squareMeterPrice" : 1
+    "id" : 1,
+    "name" : "abcd",
+    "squareMeterPrice" : 300
   },
   "rooms" : [ {
     "name" : "Quarto",
-    "width" : 2.0,
-    "length" : 2.0
-  }, {
-    "name" : "Banheiro",
-    "width" : 3.0,
-    "length" : 3.0
+    "width" : 5.0,
+    "length" : 5.0
   } ]
 }, {
   "id" : 3,
-  "name" : "Chácara Mourão",
+  "name" : "Chacara Everton",
   "district" : {
-    "id" : 12,
-    "name" : "Rua do Seu Jão",
-    "squareMeterPrice" : 1
+    "id" : 1,
+    "name" : "abcd",
+    "squareMeterPrice" : 300
   },
   "rooms" : [ {
     "name" : "Quarto",
-    "width" : 2.0,
-    "length" : 2.0
-  }, {
-    "name" : "Banheiro",
-    "width" : 3.0,
-    "length" : 3.0
+    "width" : 5.0,
+    "length" : 5.0
   } ]
 }, {
   "id" : 4,
-  "name" : "Chácara Mourão",
+  "name" : "Chacara Everton",
   "district" : {
-    "id" : 13,
-    "name" : "Rua do Seu Jão",
-    "squareMeterPrice" : 1
+    "id" : 1,
+    "name" : "abcd",
+    "squareMeterPrice" : 300
   },
   "rooms" : [ {
     "name" : "Quarto",
-    "width" : 2.0,
-    "length" : 2.0
-  }, {
-    "name" : "Banheiro",
-    "width" : 3.0,
-    "length" : 3.0
+    "width" : 5.0,
+    "length" : 5.0
   } ]
 } ]

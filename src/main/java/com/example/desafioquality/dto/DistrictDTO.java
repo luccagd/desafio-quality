@@ -32,7 +32,15 @@ public class DistrictDTO {
                 .name(district.getName())
                 .squareMeterPrice(district.getSquareMeterPrice())
                 .build();
-
         return dto;
+    }
+
+    public static District toEntity(DistrictDTO districtDTO) {
+        District district = District.builder()
+                .id(districtDTO.getId())
+                .name(districtDTO.getName())
+                .squareMeterPrice(districtDTO.getSquareMeterPrice())
+                .build();
+        return district;
     }
 }

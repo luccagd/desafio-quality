@@ -40,4 +40,14 @@ public class PropertyResponse {
                 .total(property.findFinalPrice()).build();
         return response;
     }
+
+    public static PropertyResponse toResponse(PropertyRequest propertyRequest) {
+        PropertyResponse response = PropertyResponse.builder()
+                .id(propertyRequest.getId())
+                .name(propertyRequest.getName())
+                .district(propertyRequest.getDistrict())
+                .rooms(propertyRequest.getRooms())
+                .total(propertyRequest.findFinalPrice()).build();
+        return response;
+    }
 }

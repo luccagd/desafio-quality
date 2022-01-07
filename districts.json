@@ -50,4 +50,52 @@
   "id" : 13,
   "name" : "Rua do Seu Jão",
   "squareMeterPrice" : 1
+}, {
+  "id" : 14,
+  "name" : "Bairro dos Gnomo",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 15,
+  "name" : "Bairro dos Gnomo",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 16,
+  "name" : "Bai",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 17,
+  "name" : "Rua X",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 18,
+  "name" : "Rua X",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 19,
+  "name" : "Rua X",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 20,
+  "name" : "Rua X",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 21,
+  "name" : "Rua X",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 22,
+  "name" : "Rua X",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 23,
+  "name" : "Rua X",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 24,
+  "name" : "Rua X",
+  "squareMeterPrice" : 20
+}, {
+  "id" : 25,
+  "name" : "Rua X",
+  "squareMeterPrice" : 20
 } ]
